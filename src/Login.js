@@ -2,7 +2,7 @@ import React from "react"
 import './fonts/Lato-Regular.ttf';
 import './fonts/Lato-Bold.ttf';
 import './fonts/Merriweather-Regular.ttf';
-import './Login.css';
+import './Login.scss';
 import './img/people.svg';
 export default class Login extends React.Component {
 

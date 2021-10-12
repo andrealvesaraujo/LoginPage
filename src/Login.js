@@ -1,9 +1,17 @@
-import './login.css';
+import React from "react"
+import './fonts/Lato-Regular.ttf';
+import './fonts/Lato-Bold.ttf';
+import './fonts/Merriweather-Regular.ttf';
+import './Login.css';
+import './img/people.svg';
+export default class Login extends React.Component {
 
-function Login() {
-  return (
-    <h1>Hello World Simple Page</h1>
-  );
+  render() {
+    return (
+      <div>
+        <h1>Hello World Simple Page</h1>
+      </div>
+    )
+  }
+
 }
-
-export default Login;

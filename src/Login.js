@@ -3,14 +3,45 @@ import './fonts/Lato-Regular.ttf';
 import './fonts/Lato-Bold.ttf';
 import './fonts/Merriweather-Regular.ttf';
 import './Login.scss';
-import './img/people.svg';
+import people from  './img/people.svg';
+import googleIcon from  './img/icon_Google.png';
 export default class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello World Simple Page</h1>
-      </div>
+      <main>
+        <div>
+          <img src={people} alt="Wallpaper of AboutUs page" />
+        </div>
+        <div>
+          <div>
+              <h3>Bem vindo de volta</h3>
+              <h1>Faça login na sua conta</h1>
+          </div>
+          <div>
+            <form>
+              <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="example@gmail.com"/>
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password"/>
+                <div>
+                  <input type="checkbox" id="rememberMe" name="rememberMe"  />
+                  <label for="rememberMe">Lembre de mim</label>
+                  <a href="#">Esqueceu sua senha?</a>
+                </div>
+                <div>
+                  <button type="submit">Entrar</button>
+                </div>
+                <div>
+                  <button> <img src={googleIcon} alt="Icon of Google" /> Ou faça login com o Google </button>
+                </div>
+            </form>
+          </div>
+          <div>
+            <span>  Não tem uma conta? <a href="#">Cadastre-se</a> </span>
+          </div>
+        </div>
+      </main>
     )
   }
 

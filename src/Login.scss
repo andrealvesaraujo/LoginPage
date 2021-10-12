@@ -12,3 +12,15 @@
     font-family: "Merriweather-Regular";
     src: local("Merriweather-Regular"), url("./fonts/Merriweather-Regular.ttf") format("truetype");
 }
+
+.content {
+
+    padding: 7.1rem 3.2rem 5rem 3.2rem;
+    background-color: var(--white);
+
+    .container-aboutUs {
+        display: none;
+    }
+
+
+}

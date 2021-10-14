@@ -20,13 +20,19 @@ export default class Login extends React.Component {
           </div>
           <div>
             <form className="container-form">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="example@gmail.com"/>
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password"/>
+                <div className="container-email">
+                  <label for="email">E-mail</label>
+                  <input type="email" id="email" name="email" placeholder="example@gmail.com"/>
+                </div>
+                <div className="container-password">
+                  <label for="password">Senha</label>
+                  <input type="password" id="password" name="password"/>
+                </div>
                 <div className="container-rememberMe">
-                  <input type="checkbox" id="rememberMe" name="rememberMe"  />
-                  <label for="rememberMe">Lembre de mim</label>
+                  <div className="container-checkbox">
+                    <input type="checkbox" id="rememberMe" name="rememberMe"  />
+                    <label for="rememberMe">Lembre de mim</label>
+                  </div>
                   <a href="#">Esqueceu sua senha?</a>
                 </div>
                 <div className="container-button">

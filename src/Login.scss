@@ -125,11 +125,60 @@
                 color: var(--dark);
 
             }
+
         }
 
-       
+        .container-rememberMe {
+
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                font-size: 1.4rem;
+                line-height: 1.7rem;
+                color: var(--blue);
+            }
+
+            margin-bottom: 2.5rem;
+
+        }
+
+        .container-checkbox {
+
+            display: flex;
+            align-items: center;
+            
+            input{
+                // background: var(--white300);
+                // border: 1px solid var(--input);
+                // box-sizing: border-box;
+                // appearance: none;
+                // width: 1.5rem;
+                // height: 1.5rem;
+                // border-radius: 100%;
+            }
+
+            label{
+                font-size: 1.4rem;
+                line-height: 1.7rem;                
+                color: var(--dark);
+                margin-left: 1rem;
+            }
+
+        }
+
+        .container-button {
+        
+        }
+        
+        .container-button-google {
+        
+        }
+        
     }
 
+    .container-register {
+    }
 
 }
 

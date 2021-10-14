@@ -75,7 +75,6 @@
                 font-size: 1.4rem;
                 line-height: 1.7rem;
                 padding: 1.7rem 2rem;
-
                 color: var(--dark);
 
             }
@@ -84,7 +83,6 @@
 
                 font-size: 1.4rem;
                 line-height: 1.7rem;
-
                 color: var(--dark);
 
             }
@@ -132,14 +130,16 @@
 
             display: flex;
             justify-content: space-between;
+            margin-bottom: 2.5rem;
 
             a {
+
                 font-size: 1.4rem;
                 line-height: 1.7rem;
                 color: var(--blue);
+
             }
 
-            margin-bottom: 2.5rem;
 
         }
 
@@ -149,6 +149,7 @@
             align-items: center;
             
             input{
+
                 // background: var(--white300);
                 // border: 1px solid var(--input);
                 // box-sizing: border-box;
@@ -159,20 +160,55 @@
             }
 
             label{
+
                 font-size: 1.4rem;
                 line-height: 1.7rem;                
                 color: var(--dark);
                 margin-left: 1rem;
+
             }
 
         }
 
         .container-button {
-        
+
+            margin-bottom: 1.5rem;
+
+            button {
+
+                background: var(--green);
+                border-radius: .5rem;
+                padding: 1.5rem;
+                width: 100%;
+                font-size: 1.6rem;
+                line-height: 1.9rem;
+                color: var(--white);
+
+            }
+            
         }
         
         .container-button-google {
-        
+
+            margin-bottom: 1.5rem;
+
+            button {
+                display: flex;
+                justify-content: center;
+                background: var(--dark);
+                border-radius: .5rem;
+                padding: 1.5rem;
+                width: 100%;
+                font-size: 1.6rem;
+                line-height: 1.9rem;
+                color: var(--white);
+
+            }
+
+            img {
+                margin-right: 1rem;
+            }
+            
         }
         
     }

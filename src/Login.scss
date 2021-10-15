@@ -57,6 +57,7 @@
             display: flex;
             flex-direction: column;
             margin-bottom: 1rem;
+            position: relative;
 
 
             label {
@@ -75,7 +76,7 @@
                 border-radius: .5rem;
                 font-size: 1.4rem;
                 line-height: 1.7rem;
-                padding: 1.7rem 2rem;
+                padding: 1.7rem 4rem;
                 color: var(--dark);
 
             }
@@ -93,6 +94,14 @@
 
             }
 
+            .icon-email {
+                position: absolute;
+                bottom: 16px;
+                left: 10px;
+                width: 20px;
+                height: 20px;
+            }
+
         }
 
         .container-password {
@@ -100,6 +109,8 @@
             display: flex;
             flex-direction: column;
             margin-bottom: 2.8rem;
+            position: relative;
+
 
             label{
 
@@ -117,7 +128,7 @@
                 border-radius: .5rem;
                 font-size: 1.4rem;
                 line-height: 1.7rem;
-                padding: 1.7rem 2rem;
+                padding: 1.7rem 4rem;
                 color: var(--dark);
 
             }
@@ -133,6 +144,22 @@
 
                 outline: var(--green) auto 1px;
 
+            }
+
+            .icon-lock {
+                position: absolute;
+                bottom: 20px;
+                left: 10px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .icon-show, .icon-hidden {
+                position: absolute;
+                bottom: 17px;
+                right: 15px;
+                width: 20px;
+                height: 20px;
             }
 
         }
@@ -244,7 +271,7 @@
         left: 0;
         right: 0;
         bottom: 5rem;
-        
+
         a {
             color: var(--blue);
         }

@@ -83,7 +83,12 @@
 
                 font-size: 1.4rem;
                 line-height: 1.7rem;
-                color: var(--dark);
+
+            }
+
+            input:focus-visible {
+
+                outline: var(--green) auto 1px;
 
             }
 
@@ -120,7 +125,12 @@
 
                 font-size: 1.4rem;
                 line-height: 1.7rem;
-                color: var(--dark);
+
+            }
+
+            input:focus-visible {
+
+                outline: var(--green) auto 1px;
 
             }
 
@@ -150,13 +160,21 @@
             
             input{
 
-                // background: var(--white300);
-                // border: 1px solid var(--input);
-                // box-sizing: border-box;
-                // appearance: none;
-                // width: 1.5rem;
-                // height: 1.5rem;
-                // border-radius: 100%;
+                background: var(--white300);
+                border: 1px solid var(--input);
+                box-sizing: border-box;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 100%;
+                vertical-align: middle;
+                appearance: none;
+                -webkit-appearance: none;
+                outline: none;
+                cursor: pointer;
+            }
+
+            input:checked {
+                background-color: var(--green);
             }
 
             label{

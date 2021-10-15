@@ -283,13 +283,32 @@
 @media (min-width: 768px) {
 
     .content {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        height: 100vh;
+        padding: 0;
         
         .container-aboutUs {
 
             background-color: var(--white300);
-            display: block;
+            display: flex;
+
+            img {
+                width: 50%;
+                height: 50%;
+                margin: auto;
+            }
 
         }    
+
+        .container-info {
+            position: relative;
+            padding: 14rem 18rem;
+            background-color: var(--white);
+            font-family: "Lato";
+        }
     
     }
 }

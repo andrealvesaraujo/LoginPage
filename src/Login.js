@@ -20,7 +20,7 @@ export default class Login extends React.Component {
         <div className="container-aboutUs">
           <img src={people} alt="Wallpaper of AboutUs page" />
         </div>
-        <div className="container-info">
+        <div className="container-login">
           <div className="container-title">
               <h3>Bem vindo de volta</h3>
               <h1>Faça login na sua conta</h1>

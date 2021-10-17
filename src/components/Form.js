@@ -3,7 +3,7 @@ import "./Form.scss"
 import Input from "./Input"
 import Button from "./Button"
 
-// import googleIcon from  '../img/icon_Google.png';
+import googleIcon from  '../img/icon_Google.png';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 // import { faLock } from '@fortawesome/free-solid-svg-icons'
@@ -22,7 +22,13 @@ export default class Form extends Component {
                 </div>
                 <a href="/">Esqueceu sua senha?</a>
               </div>
-              <Button />
+              <Button text="Entrar" />
+              <Button 
+                addIcon={googleIcon} 
+                altIcon="Icon of Google" 
+                text="Ou faça login com o Google"
+                extraClass = "google"
+              />
           </form>
         )
     }

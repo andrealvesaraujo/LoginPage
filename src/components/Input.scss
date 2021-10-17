@@ -1,0 +1,112 @@
+
+.container-email {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    position: relative;
+
+
+    label {
+
+        font-size: 1.6rem;
+        line-height: 1.9rem;                
+        color: var(--dark);
+        margin-bottom: 1rem;
+
+    }
+
+    input {
+        
+        border: .1rem solid var(--input);
+        box-sizing: border-box;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        padding: 1.7rem 4rem;
+        color: var(--dark);
+
+    }
+
+    input::placeholder {
+
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+
+    }
+
+    input:focus-visible {
+
+        outline: var(--green) auto .1rem;
+
+    }
+
+    .icon-email {
+        position: absolute;
+        bottom: 1.6rem;
+        left: 1rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+}
+
+.container-password {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.8rem;
+    position: relative;
+
+
+    label{
+
+        font-size: 1.6rem;
+        line-height: 1.9rem;                
+        color: var(--dark);
+        margin-bottom: 1rem;
+        
+    }
+
+    input {
+
+        border: .1rem solid var(--input);
+        box-sizing: border-box;
+        border-radius: .5rem;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        padding: 1.7rem 4rem;
+        color: var(--dark);
+
+    }
+
+    input::placeholder {
+
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+
+    }
+
+    input:focus-visible {
+
+        outline: var(--green) auto .1rem;
+
+    }
+
+    .icon-lock {
+        position: absolute;
+        bottom: 2rem;
+        left: 1rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .icon-show, .icon-hidden {
+        position: absolute;
+        bottom: 1.7rem;
+        right: 1.5rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+}

@@ -1,0 +1,44 @@
+
+
+.container-button {
+
+    margin-bottom: 1.5rem;
+
+    button {
+
+        background: var(--green);
+        border-radius: .5rem;
+        padding: 1.5rem;
+        width: 100%;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: var(--white);
+        cursor: pointer;
+
+    }
+    
+}
+
+.container-button-google {
+
+    margin-bottom: 1.5rem;
+
+    button {
+        display: flex;
+        justify-content: center;
+        background: var(--dark);
+        border-radius: .5rem;
+        padding: 1.5rem;
+        width: 100%;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: var(--white);
+        cursor: pointer;
+
+    }
+
+    img {
+        margin-right: 1rem;
+    }
+    
+}

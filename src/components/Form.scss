@@ -1,0 +1,54 @@
+
+    .container-form {
+
+        .container-rememberMe {
+
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+
+            a {
+
+                font-size: 1.4rem;
+                line-height: 1.7rem;
+                color: var(--blue);
+
+            }
+
+        }
+
+        .container-checkbox {
+
+            display: flex;
+            align-items: center;
+            
+            input{
+
+                background: var(--white300);
+                border: .1rem solid var(--input);
+                box-sizing: border-box;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 100%;
+                vertical-align: middle;
+                appearance: none;
+                -webkit-appearance: none;
+                outline: none;
+                cursor: pointer;
+            }
+
+        input:checked {
+                background-color: var(--green);
+            }
+
+            label{
+
+                font-size: 1.4rem;
+                line-height: 1.7rem;                
+                color: var(--dark);
+                margin-left: 1rem;
+
+            }
+
+        }
+    }

@@ -22,12 +22,14 @@ export default class Form extends Component {
                 </div>
                 <a href="/">Esqueceu sua senha?</a>
               </div>
-              <Button text="Entrar" />
-              <Button 
+              <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />
+              <Button  
+                onClick={this.props.handlerGoogleButtonFormLogin()}
                 addIcon={googleIcon} 
                 altIcon="Icon of Google" 
                 text="Ou faça login com o Google"
                 extraClass = "google"
+                isSubmit
               />
           </form>
         )

@@ -6,7 +6,6 @@ import './Login.scss';
 import people from  './img/people.svg';
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
-import Title from './components/Title';
 import SubTitle from './components/SubTitle';
 import Form from './components/Form';
 import Footer from './components/Footer';
@@ -26,28 +25,74 @@ export default class Login extends React.Component {
       }
   }
 
-  handlerButtonFormLogin = (e) => {
+  handleCheckBox = (e) => {
+    this.setState({
+      ...this.state,
+      isRemembered : e.target.checked
+    });
+  }
+
+  handleInputEmail = (e) => {
+    this.setState({
+      ...this.state,
+      valueEmail : e.target.value
+    });
+  }
+
+  handleInputPassword = (e) => {
+    this.setState({
+      ...this.state,
+      valuePassword : e.target.value
+    });
+  }
+
+  handleFormLoginSubmit = (e) => {
     e.preventDefault()
-    // Fazer a validação
+
+    if(this.state.valueEmail && this.state.valuePassword){
+      if(this.state.isGoogleButton) {
+        this.setState(
+          {
+            ...this.state,
+            title: 'Google ROCKS!!!',
+            subtitle: 'Login Feito Pelo Google com Sucesso',
+            show: false
+          }
+        )
+      }
+  
+      if(this.state.isNormalButton) {
+        this.setState(
+          {
+            ...this.state,
+            title: 'Vms trabalhar juntos!!!',
+            subtitle: 'Login Feito Com Sucesso',
+            show: false
+          }
+        )
+      }
+    } else {
+      alert("Erro: Preenche todos os campos")
+    }
+    
+  }
+
+  handlerButtonFormLogin = (e) => {
     this.setState(
       {
         ...this.state,
-        title: 'Vms trabalhar juntos!!!',
-        subtitle: 'Login Feito Com Sucesso',
-        show: false
+        isNormalButton: true,
+        isGoogleButton: false,
       }
     )
   }
 
   handlerGoogleButtonFormLogin = (e) => {
-    e.preventDefault()
-    // Fazer a validação
     this.setState(
       {
         ...this.state,
-        title: 'Google ROCKS!!!',
-        subtitle: 'Login Feito Pelo Google com Sucesso',
-        show: false
+        isNormalButton: false,
+        isGoogleButton: true,
       }
     )
   }
@@ -58,7 +103,12 @@ export default class Login extends React.Component {
         ...this.state,
         title: "Faça login na sua conta",
         subtitle: "Bem vindo de volta",
-        show: true
+        show: true,
+        isNormalButton: false,
+        isGoogleButton: false,
+        valuePassword : "",
+        valueEmail : "",
+        isRemembered : false
       }
     )
   }
@@ -72,7 +122,10 @@ export default class Login extends React.Component {
           {this.state.show ? (
             <>
             <div>
-              <Form 
+              <Form handleFormLoginSubmit = {() => this.handleFormLoginSubmit}
+                handleInputEmail = {()=>this.handleInputEmail}
+                handleInputPassword = {()=>this.handleInputPassword}
+                handleCheckBox = {()=>this.handleCheckBox}
                 handlerButtonFormLogin = {() => this.handlerButtonFormLogin} 
                 handlerGoogleButtonFormLogin = {() => this.handlerGoogleButtonFormLogin}
               />
@@ -83,7 +136,7 @@ export default class Login extends React.Component {
             <>
               <FontAwesomeIcon className="icon-login-sucess" icon={faSmileBeam} />
               <Button text="Voltar" onClick={this.handleGoBackLogin} />
-              <SubTitle centered value={"Lembrei-me de vc"} />
+              { this.state.isRemembered && (<SubTitle centered value={"Lembrei-me de vc"} />)}
             </>
           )}
         </div>

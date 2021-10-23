@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./Button.scss"
-import googleIcon from  '../img/icon_Google.png';
 
 export default class Button extends Component {
     render() {

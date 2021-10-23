@@ -30,6 +30,16 @@ export default class Form extends Component {
                 rightShowIcon = {faEye} 
                 rightHiddenIcon = {faEyeSlash} 
               />
+              {/* {this.props.forgotPassword && 
+                (<Input 
+                  label="Confirmar Senha" 
+                  type="password" 
+                  id="password2" 
+                  leftIcon = {faLock} 
+                  rightShowIcon = {faEye} 
+                  rightHiddenIcon = {faEyeSlash} 
+                />)
+              } */}
               <div className="container-rememberMe">
                 <div className="container-checkbox">
                   <input type="checkbox" id="rememberMe" name="rememberMe"  />

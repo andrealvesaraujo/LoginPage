@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import "./Register.scss"
+import "./Footer.scss"
 
-export default class Register extends Component {
+export default class Footer extends Component {
     render() {
         return (
-            <div className="container-register">
+            <div className="container-footer">
                 <span>  Não tem uma conta? <a href="/">Cadastre-se</a> </span>
             </div>
         )

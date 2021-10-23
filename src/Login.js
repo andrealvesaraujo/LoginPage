@@ -5,14 +5,14 @@ import './fonts/Merriweather-Regular.ttf';
 import './Login.scss';
 import people from  './img/people.svg';
 import AboutUs from './components/AboutUs';
+import Header from './components/Header';
 import Title from './components/Title';
-import Register from './components/Register';
+import SubTitle from './components/SubTitle';
 import Form from './components/Form';
+import Footer from './components/Footer';
 import Button from "./components/Button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmileBeam } from '@fortawesome/free-solid-svg-icons'
-
-
 
 
 export default class Login extends React.Component {
@@ -28,8 +28,7 @@ export default class Login extends React.Component {
 
   handlerButtonFormLogin = (e) => {
     e.preventDefault()
-    console.log(e)
-    // Fez-se a validação
+    // Fazer a validação
     this.setState(
       {
         ...this.state,
@@ -42,8 +41,7 @@ export default class Login extends React.Component {
 
   handlerGoogleButtonFormLogin = (e) => {
     e.preventDefault()
-    console.log(e)
-    // Fez-se a validação
+    // Fazer a validação
     this.setState(
       {
         ...this.state,
@@ -55,7 +53,6 @@ export default class Login extends React.Component {
   }
 
   handleGoBackLogin = () => {
-    // Fez-se a validação
     this.setState(
       {
         ...this.state,
@@ -66,13 +63,12 @@ export default class Login extends React.Component {
     )
   }
 
-  // Focar em mudar o titulo a partir de click do form
   render() {
     return (
       <main className="content">
         <AboutUs src={people} alt="Wallpaper of AboutUs page" />
         <div className="container-login">
-          <Title title={this.state.title} subtitle={this.state.subtitle} />
+          <Header title={this.state.title} subtitle={this.state.subtitle} />
           {this.state.show ? (
             <>
             <div>
@@ -81,12 +77,13 @@ export default class Login extends React.Component {
                 handlerGoogleButtonFormLogin = {() => this.handlerGoogleButtonFormLogin}
               />
             </div>
-            <Register />
+            <Footer />
             </>
           ): (
             <>
               <FontAwesomeIcon className="icon-login-sucess" icon={faSmileBeam} />
               <Button text="Voltar" onClick={this.handleGoBackLogin} />
+              <SubTitle centered value={"Lembrei-me de vc"} />
             </>
           )}
         </div>

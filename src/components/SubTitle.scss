@@ -1,0 +1,14 @@
+h3 {
+
+    font-family: "Merriweather";
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: var(--dark);
+    font-weight: normal;
+    margin-bottom: .7rem;
+
+    &.centered {
+        text-align: center;
+    }
+
+}

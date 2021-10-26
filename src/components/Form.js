@@ -35,6 +35,7 @@ export default class Form extends Component {
               rightShowIcon = {faEye} 
               rightHiddenIcon = {faEyeSlash} 
               onChange = {this.props.handleInputPassword()}
+              showErrorMsg = {this.props.showErrorMsg}
             />
             {/* {this.props.forgotPassword && 
               (<Input 

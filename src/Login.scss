@@ -22,6 +22,12 @@
     .container-login {
         display: flex;
         flex-direction: column;
+
+        .error-msg {
+            color:red;
+            font-size: 1.8rem;
+            text-align: center;
+        }
     }
 
     .icon-login-sucess {
@@ -54,6 +60,7 @@
             flex-direction: column;
             margin: auto;
             justify-content: center;
+
         }
     
     }

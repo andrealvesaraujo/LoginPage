@@ -8,7 +8,7 @@ export default class Input extends Component {
     constructor(props) {
         super(props)
         this.state = {
-           type : this.props.type
+           type : this.props.type,
         }
     }
 

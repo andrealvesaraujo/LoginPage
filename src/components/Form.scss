@@ -37,7 +37,7 @@
                 cursor: pointer;
             }
 
-        input:checked {
+            input:checked {
                 background-color: var(--green);
             }
 
@@ -47,6 +47,7 @@
                 line-height: 1.7rem;                
                 color: var(--dark);
                 margin-left: 1rem;
+                cursor: pointer;
 
             }
 

@@ -14,9 +14,21 @@
         line-height: 1.9rem;
         color: var(--white);
         cursor: pointer;
+        @media (min-width: 768px) { 
+            transition: all ease .5s;
+        }
 
     }
+
+    @media (min-width: 768px) {  
+        button:hover {
+            opacity: 0.5;
+            transition: all ease .5s;
+        }
+    }
     
+    
+
 }
 
 .google{
@@ -27,9 +39,22 @@
         background: var(--dark);
         color: var(--white);
 
+        @media (min-width: 768px) { 
+            transition: all ease .5s;
+        }
+
     }
 
     img {
         margin-right: 1rem;
     }
+
+    @media (min-width: 768px) {  
+        
+        button:hover {
+            opacity: 0.5;
+            transition: all ease .5s;
+        }
+    }
+
 }

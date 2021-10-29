@@ -27,8 +27,9 @@ export default class Form extends Component {
               leftIcon = {faEnvelope}
               onChange = {this.props.handleInputEmail()}
             />
+            {/* <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} /> */}
             <Input 
-              label="Senha" 
+              label={this.props.isLogin ? "Senha" : "Nova Senha"} 
               type="password" 
               id="password" 
               leftIcon = {faLock} 
@@ -37,32 +38,41 @@ export default class Form extends Component {
               onChange = {this.props.handleInputPassword()}
               showErrorMsg = {this.props.showErrorMsg}
             />
-            {/* {this.props.forgotPassword && 
-              (<Input 
+            {!this.props.isLogin && 
+              <Input 
                 label="Confirmar Senha" 
                 type="password" 
                 id="password2" 
                 leftIcon = {faLock} 
                 rightShowIcon = {faEye} 
                 rightHiddenIcon = {faEyeSlash} 
-              />)
-            } */}
-            <div className="container-rememberMe">
-              <div className="container-checkbox">
-                <input onChange={this.props.handleCheckBox()} type="checkbox" id="rememberMe" name="rememberMe"  />
-                <label htmlFor="rememberMe">Lembre de mim</label>
-              </div>
-              <a href="/">Esqueceu sua senha?</a>
-            </div>
-            <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />
-            <Button  
-              onClick={this.props.handlerGoogleButtonFormLogin()}
-              addIcon={googleIcon} 
-              altIcon="Icon of Google" 
-              text="Ou faça login com o Google"
-              extraClass = "google"
-              isSubmit
-            />
+                onChange = {this.props.handleInputConfirmPassword()}
+                showErrorMsg = {this.props.showErrorMsg}
+              /> 
+            }
+            {this.props.isLogin 
+              ?
+                (<>
+                  <div className="container-rememberMe">
+                    <div className="container-checkbox">
+                      <input onChange={this.props.handleCheckBox()} type="checkbox" id="rememberMe" name="rememberMe" />
+                      <label htmlFor="rememberMe">Lembre de mim</label>
+                    </div>
+                    <a href="/">Esqueceu sua senha?</a>
+                  </div>
+                  <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />
+                  <Button
+                    onClick={this.props.handlerGoogleButtonFormLogin()}
+                    addIcon={googleIcon}
+                    altIcon="Icon of Google"
+                    text="Ou faça login com o Google"
+                    extraClass="google"
+                    isSubmit 
+                  />
+                </>)
+              : 
+                (<Button text="Cadastrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />)
+            }
         </form>
       )
   }

@@ -11,7 +11,7 @@ import Form from './components/Form';
 import Footer from './components/Footer';
 import Button from "./components/Button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSmileBeam } from '@fortawesome/free-solid-svg-icons'
+import { faSmileBeam, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import Fade from 'react-reveal/Fade';
 
 
@@ -23,7 +23,8 @@ export default class Login extends React.Component {
         title: "Faça login na sua conta",
         subtitle: "Bem vindo de volta",
         show: true,
-        showErrorMsg: false
+        showErrorMsg: false,
+        isLogin: true,
       }
   }
 
@@ -85,41 +86,96 @@ export default class Login extends React.Component {
     
   }
 
-  handleFormLoginSubmit = (e) => {
-    e.preventDefault()
+  handleInputConfirmPassword = (e) => {
 
-    if(this.state.valueEmail && this.state.valuePassword){
-      if(this.state.isGoogleButton) {
-        this.setState(
-          {
-            ...this.state,
-            title: 'Google ROCKS!!!',
-            subtitle: 'Login Feito Pelo Google com Sucesso',
-            show: false,
-          }
-        )
-      }
-  
-      if(this.state.isNormalButton) {
-        this.setState(
-          {
-            ...this.state,
-            title: 'Vms trabalhar juntos!!!',
-            subtitle: 'Login Feito Com Sucesso',
-            show: false,
-          }
-        )
-      }
+    if(e.target.value !== "") {
+      this.setState({
+        ...this.state,
+        valueConfirmPassword : e.target.value,
+        showErrorMsg: false,
+        errorMsg: ""
+      });
     } else {
       this.setState(
         {
           ...this.state,
           showErrorMsg: true,
-          errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
+          valueConfirmPassword : "",
+          errorInput: "Ops, preencha todos os campos"
         }
       )
     }
     
+  }
+
+  handleFormLoginSubmit = (e) => {
+    e.preventDefault()
+
+    if(this.state.isLogin) {
+      
+      if(this.state.valueEmail && this.state.valuePassword){
+        if(this.state.isGoogleButton) {
+          this.setState(
+            {
+              ...this.state,
+              title: 'Google ROCKS!!!',
+              subtitle: 'Login Feito Pelo Google com Sucesso',
+              show: false,
+            }
+          )
+        }
+    
+        if(this.state.isNormalButton) {
+          this.setState(
+            {
+              ...this.state,
+              title: 'Vms trabalhar juntos!!!',
+              subtitle: 'Login Feito Com Sucesso',
+              show: false,
+            }
+          )
+        }
+      } else {
+        this.setState(
+          {
+            ...this.state,
+            showErrorMsg: true,
+            errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
+          }
+        )
+      }
+
+    } else {
+      if(this.state.valueEmail && this.state.valuePassword && this.state.valueConfirmPassword){
+        if(this.state.valuePassword === this.state.valueConfirmPassword){
+          this.setState(
+            {
+              ...this.state,
+              title: 'Vc é um dos nossos',
+              subtitle: 'Cadastro Feito com Sucesso',
+              show: false,
+            }
+            )
+        }else {
+          this.setState(
+            {
+              ...this.state,
+              showErrorMsg: true,
+              errorMsg: "Ops, as senhas precisam ser iguais",
+            }
+          )
+        }
+      } else {
+        this.setState(
+          {
+            ...this.state,
+            showErrorMsg: true,
+            errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
+          }
+        )
+      }
+    }
+
   }
 
   handlerButtonFormLogin = (e) => {
@@ -132,12 +188,34 @@ export default class Login extends React.Component {
     )
   }
 
+  handlerButtonFormRegistration = (e) => {
+    this.setState(
+      {
+        ...this.state,
+      }
+    )
+  }
+
   handlerGoogleButtonFormLogin = (e) => {
     this.setState(
       {
         ...this.state,
         isNormalButton: false,
         isGoogleButton: true,
+      }
+    )
+  }
+
+  handlerRegistration = (e) => {
+    e.preventDefault()
+    const newTitle = !this.state.isLogin ? "Faça login na sua conta" : "Realize seu cadastro abaixo"
+    const newSubtitle = !this.state.isLogin ? "Bem vindo de volta" : "Seja bem vindo"
+    this.setState(
+      {
+        ...this.state,
+        isLogin: !this.state.isLogin,
+        title: newTitle,
+        subtitle: newSubtitle,
       }
     )
   }
@@ -155,7 +233,9 @@ export default class Login extends React.Component {
         valueEmail : "",
         isRemembered : false,
         showErrorMsg: false,
-        errorMsg: ""
+        errorMsg: "",
+        errorInput: "",
+        isLogin: true
       }
     )
   }
@@ -173,9 +253,12 @@ export default class Login extends React.Component {
                   <Form handleFormLoginSubmit = {() => this.handleFormLoginSubmit}
                     handleInputEmail = {()=>this.handleInputEmail}
                     handleInputPassword = {()=>this.handleInputPassword}
+                    handleInputConfirmPassword = {()=>this.handleInputConfirmPassword}
                     handleCheckBox = {()=>this.handleCheckBox}
                     handlerButtonFormLogin = {() => this.handlerButtonFormLogin} 
+                    handlerButtonFormRegistration = {() => this.handlerButtonFormRegistration} 
                     handlerGoogleButtonFormLogin = {() => this.handlerGoogleButtonFormLogin}
+                    isLogin = {this.state.isLogin}
                   />
                 </div>
                 {this.state.showErrorMsg && (
@@ -185,11 +268,11 @@ export default class Login extends React.Component {
                     </div>
                   </Fade>                    
                 )}
-                <Footer />
+                <Footer isLogin = {this.state.isLogin} handlerClickLink = {()=>this.handlerRegistration}/>
               </>
             ): (
               <>
-                <FontAwesomeIcon className="icon-login-sucess" icon={faSmileBeam} />
+                <FontAwesomeIcon className={this.state.isLogin ? "icon-login-sucess" : "icon-register-sucess"} icon={this.state.isLogin ? faSmileBeam : faThumbsUp } />
                 <Button text="Voltar" onClick={this.handleGoBackLogin} />
                 { this.state.isRemembered && (<SubTitle centered value={"Lembrei-me de vc"} />)}
               </>

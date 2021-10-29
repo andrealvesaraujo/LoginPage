@@ -35,20 +35,21 @@ export default class Login extends React.Component {
   }
 
   handleInputEmail = (e) => {
-    let regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,7})+$/;
+    let regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(regex.test(e.target.value)) {
       this.setState({
         ...this.state,
         valueEmail : e.target.value,
         showErrorMsg: false,
-        errorMsg: ""
+        errorInput: ""
       });
     } else if(e.target.value === "") {
       this.setState(
         {
           ...this.state,
           showErrorMsg: true,
-          errorMsg: "Ops, preencha todos os campos"
+          errorInput: "Ops, preencha todos os campos",
+          valueEmail : "",
         }
       )
     } else {
@@ -56,7 +57,7 @@ export default class Login extends React.Component {
         {
           ...this.state,
           showErrorMsg: true,
-          errorMsg: "Ops, preencheu um email inválido"
+          errorInput: "Ops, preencheu um email inválido"
         }
       )
     }
@@ -76,7 +77,8 @@ export default class Login extends React.Component {
         {
           ...this.state,
           showErrorMsg: true,
-          errorMsg: "Ops, preencha todos os campos"
+          valuePassword : "",
+          errorInput: "Ops, preencha todos os campos"
         }
       )
     }
@@ -113,7 +115,7 @@ export default class Login extends React.Component {
         {
           ...this.state,
           showErrorMsg: true,
-          errorMsg: this.state.errorMsg || "Ops, preencha todos os campos"
+          errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
         }
       )
     }
@@ -177,9 +179,11 @@ export default class Login extends React.Component {
                   />
                 </div>
                 {this.state.showErrorMsg && (
+                  <Fade>
                     <div className="error-msg">
                       <span>{this.state.errorMsg}</span>
                     </div>
+                  </Fade>                    
                 )}
                 <Footer />
               </>

@@ -9,7 +9,15 @@ export default class Footer extends Component {
                 ? 
                     (<span>  Não tem uma conta? <a href="/" onClick={this.props.handlerClickLink()}>Cadastre-se</a> </span>)
                 :
-                    (<span>  Possui uma conta? <a href="/" onClick={this.props.handlerClickLink()}>Realize seu login</a> </span>)
+                    ( 
+                        this.props.forgotPassword 
+                        ? 
+                            <span>  Lembrou dela? <a href="/" onClick={this.props.handlerClickLink()}>Então realize seu login</a> </span>
+                        : 
+                        (
+                            <span>  Possui uma conta? <a href="/" onClick={this.props.handlerClickLink()}>Realize seu login</a> </span>
+                        )
+                    )    
                 }
             </div>
         )

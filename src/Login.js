@@ -11,7 +11,7 @@ import Form from './components/Form';
 import Footer from './components/Footer';
 import Button from "./components/Button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSmileBeam, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faSmileBeam, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import Fade from 'react-reveal/Fade';
 
 
@@ -23,8 +23,12 @@ export default class Login extends React.Component {
         title: "Faça login na sua conta",
         subtitle: "Bem vindo de volta",
         show: true,
-        showErrorMsg: false,
         isLogin: true,
+        forgotPassword: false,
+        valuePassword : "",
+        valueConfirmPassword: "",
+        valueEmail : "",
+        showErrorMsg: false,
       }
   }
 
@@ -49,14 +53,15 @@ export default class Login extends React.Component {
         {
           ...this.state,
           showErrorMsg: true,
+          valueEmail : e.target.value,
           errorInput: "Ops, preencha todos os campos",
-          valueEmail : "",
         }
       )
     } else {
       this.setState(
         {
           ...this.state,
+          valueEmail : e.target.value,
           showErrorMsg: true,
           errorInput: "Ops, preencheu um email inválido"
         }
@@ -120,6 +125,8 @@ export default class Login extends React.Component {
               ...this.state,
               title: 'Google ROCKS!!!',
               subtitle: 'Login Feito Pelo Google com Sucesso',
+              valuePassword : "",
+              valueEmail : "",
               show: false,
             }
           )
@@ -131,6 +138,8 @@ export default class Login extends React.Component {
               ...this.state,
               title: 'Vms trabalhar juntos!!!',
               subtitle: 'Login Feito Com Sucesso',
+              valuePassword : "",
+              valueEmail : "",
               show: false,
             }
           )
@@ -146,34 +155,89 @@ export default class Login extends React.Component {
       }
 
     } else {
-      if(this.state.valueEmail && this.state.valuePassword && this.state.valueConfirmPassword){
-        if(this.state.valuePassword === this.state.valueConfirmPassword){
-          this.setState(
-            {
-              ...this.state,
-              title: 'Vc é um dos nossos',
-              subtitle: 'Cadastro Feito com Sucesso',
-              show: false,
-            }
+
+      if(this.state.forgotPassword){
+
+        if(this.state.valuePassword && this.state.valueConfirmPassword){
+
+          if(this.state.valuePassword === this.state.valueConfirmPassword){
+
+            this.setState(
+              {
+                ...this.state,
+                title: 'Agora vc não esquece mais',
+                subtitle: 'Lembrança de Senha Feita com Sucesso',
+                valuePassword : "",
+                valueConfirmPassword: "",
+                show: false,
+              }
+              )
+
+          } else {
+
+            this.setState(
+              {
+                ...this.state,
+                showErrorMsg: true,
+                errorMsg: "Ops, as senhas precisam ser iguais",
+              }
             )
-        }else {
+
+          }
+        } else {
+
           this.setState(
             {
               ...this.state,
               showErrorMsg: true,
-              errorMsg: "Ops, as senhas precisam ser iguais",
+              errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
             }
           )
+
         }
+
       } else {
-        this.setState(
-          {
-            ...this.state,
-            showErrorMsg: true,
-            errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
+        
+        if(this.state.valueEmail && this.state.valuePassword && this.state.valueConfirmPassword){
+
+          if(this.state.valuePassword === this.state.valueConfirmPassword){
+
+            this.setState(
+              {
+                ...this.state,
+                title: 'Vc é um dos nossos',
+                subtitle: 'Cadastro Feito com Sucesso',
+                valuePassword : "",
+                valueConfirmPassword: "",
+                valueEmail : "",
+                show: false,
+              }
+              )
+
+          }else {
+
+            this.setState(
+              {
+                ...this.state,
+                showErrorMsg: true,
+                errorMsg: "Ops, as senhas precisam ser iguais",
+              }
+            )
+
           }
-        )
+        } else {
+
+          this.setState(
+            {
+              ...this.state,
+              showErrorMsg: true,
+              errorMsg: this.state.errorInput || "Ops, preencha todos os campos"
+            }
+          )
+
+        }
       }
+
     }
 
   }
@@ -208,7 +272,7 @@ export default class Login extends React.Component {
 
   handlerRegistration = (e) => {
     e.preventDefault()
-    const newTitle = !this.state.isLogin ? "Faça login na sua conta" : "Realize seu cadastro abaixo"
+    const newTitle = !this.state.isLogin ? "Faça login na sua conta" : "Realize seu cadastro"
     const newSubtitle = !this.state.isLogin ? "Bem vindo de volta" : "Seja bem vindo"
     this.setState(
       {
@@ -216,6 +280,31 @@ export default class Login extends React.Component {
         isLogin: !this.state.isLogin,
         title: newTitle,
         subtitle: newSubtitle,
+        forgotPassword: false,        
+        errorMsg: "",
+        errorInput: "",
+        valuePassword : "",
+        valueConfirmPassword: "",
+        valueEmail : "",
+      }
+    )
+  }
+
+  handlerForgotPassword = (e) => {
+    e.preventDefault()
+    
+    this.setState(
+      {
+        ...this.state,
+        isLogin: false,
+        forgotPassword: true,
+        title: "Preencha a nova senha",
+        subtitle: "Esqueceu né?",
+        valuePassword : "",
+        valueConfirmPassword: "",
+        valueEmail : "",
+        errorMsg: "",
+        errorInput: "",
       }
     )
   }
@@ -230,12 +319,14 @@ export default class Login extends React.Component {
         isNormalButton: false,
         isGoogleButton: false,
         valuePassword : "",
+        valueConfirmPassword: "",
         valueEmail : "",
         isRemembered : false,
         showErrorMsg: false,
         errorMsg: "",
         errorInput: "",
-        isLogin: true
+        isLogin: true,
+        forgotPassword: false,
       }
     )
   }
@@ -250,7 +341,13 @@ export default class Login extends React.Component {
             {this.state.show ? (
               <>
                 <div>
-                  <Form handleFormLoginSubmit = {() => this.handleFormLoginSubmit}
+                  <Form
+                    isLogin = {this.state.isLogin}
+                    forgotPassword = {this.state.forgotPassword}
+                    valueEmail = {this.state.valueEmail}
+                    valuePassword = {this.state.valuePassword}
+                    valueConfirmPassword = {this.state.valueConfirmPassword}
+                    handleFormLoginSubmit = {() => this.handleFormLoginSubmit}
                     handleInputEmail = {()=>this.handleInputEmail}
                     handleInputPassword = {()=>this.handleInputPassword}
                     handleInputConfirmPassword = {()=>this.handleInputConfirmPassword}
@@ -258,7 +355,7 @@ export default class Login extends React.Component {
                     handlerButtonFormLogin = {() => this.handlerButtonFormLogin} 
                     handlerButtonFormRegistration = {() => this.handlerButtonFormRegistration} 
                     handlerGoogleButtonFormLogin = {() => this.handlerGoogleButtonFormLogin}
-                    isLogin = {this.state.isLogin}
+                    handlerForgotPassword = {() => this.handlerForgotPassword}
                   />
                 </div>
                 {this.state.showErrorMsg && (
@@ -268,11 +365,11 @@ export default class Login extends React.Component {
                     </div>
                   </Fade>                    
                 )}
-                <Footer isLogin = {this.state.isLogin} handlerClickLink = {()=>this.handlerRegistration}/>
+                <Footer forgotPassword = {this.state.forgotPassword}  isLogin = {this.state.isLogin} handlerClickLink = {()=>this.handlerRegistration}/>
               </>
             ): (
               <>
-                <FontAwesomeIcon className={this.state.isLogin ? "icon-login-sucess" : "icon-register-sucess"} icon={this.state.isLogin ? faSmileBeam : faThumbsUp } />
+                <FontAwesomeIcon className={this.state.isLogin ? "icon-login-sucess" : (this.state.forgotPassword ? "icon-forgot-sucess" : ("icon-register-sucess"))} icon={this.state.isLogin ? faSmileBeam : (this.state.forgotPassword ? faCheck : faThumbsUp)} />
                 <Button text="Voltar" onClick={this.handleGoBackLogin} />
                 { this.state.isRemembered && (<SubTitle centered value={"Lembrei-me de vc"} />)}
               </>

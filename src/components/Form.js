@@ -19,15 +19,21 @@ export default class Form extends Component {
   render() {
       return (
         <form onSubmit={this.props.handleFormLoginSubmit()} className="container-form">
-            <Input 
-              label="E-mail" 
-              type="email" 
-              id="email" 
-              placeholder="example@gmail.com" 
-              leftIcon = {faEnvelope}
-              onChange = {this.props.handleInputEmail()}
-            />
-            {/* <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} /> */}
+            {
+              !this.props.forgotPassword 
+              && 
+                (
+                  <Input 
+                  label="E-mail" 
+                  type="email" 
+                  id="email" 
+                  placeholder="example@gmail.com" 
+                  leftIcon = {faEnvelope}
+                  onChange = {this.props.handleInputEmail()}
+                  value = {this.props.valueEmail}
+                  />
+                )
+            }
             <Input 
               label={this.props.isLogin ? "Senha" : "Nova Senha"} 
               type="password" 
@@ -37,6 +43,7 @@ export default class Form extends Component {
               rightHiddenIcon = {faEyeSlash} 
               onChange = {this.props.handleInputPassword()}
               showErrorMsg = {this.props.showErrorMsg}
+              value = {this.props.valuePassword}
             />
             {!this.props.isLogin && 
               <Input 
@@ -48,6 +55,7 @@ export default class Form extends Component {
                 rightHiddenIcon = {faEyeSlash} 
                 onChange = {this.props.handleInputConfirmPassword()}
                 showErrorMsg = {this.props.showErrorMsg}
+                value = {this.props.valueConfirmPassword}
               /> 
             }
             {this.props.isLogin 
@@ -58,7 +66,7 @@ export default class Form extends Component {
                       <input onChange={this.props.handleCheckBox()} type="checkbox" id="rememberMe" name="rememberMe" />
                       <label htmlFor="rememberMe">Lembre de mim</label>
                     </div>
-                    <a href="/">Esqueceu sua senha?</a>
+                    <a href="/" onClick={this.props.handlerForgotPassword()}>Esqueceu sua senha?</a>
                   </div>
                   <Button text="Entrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />
                   <Button
@@ -71,7 +79,13 @@ export default class Form extends Component {
                   />
                 </>)
               : 
-                (<Button text="Cadastrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />)
+                ( 
+                  this.props.forgotPassword 
+                  ? 
+                    (<Button text="Salvar" isSubmit onClick={this.props.handlerButtonFormLogin()} />) 
+                  : 
+                    (<Button text="Cadastrar" isSubmit onClick={this.props.handlerButtonFormLogin()} />) 
+                )
             }
         </form>
       )

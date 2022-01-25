@@ -56,7 +56,7 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://movie-streaming-andrealvesaraujo.vercel.app/)
+[![Product Name Screen Shot][product-screenshot]](https://login-page-andrealvesaraujo.vercel.app//)
 
 * Figma Prototype:
 
